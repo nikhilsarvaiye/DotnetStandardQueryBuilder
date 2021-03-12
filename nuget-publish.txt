@@ -1,0 +1,3 @@
+dotnet nuget push "QueryBuilder.Core\bin\Release\DotnetStandardQueryBuilder.Core.1.0.0.nupkg" --api-key  --source https://api.nuget.org/v3/index.json
+dotnet nuget push "QueryBuilder.OData\bin\Release\DotnetStandardQueryBuilder.OData.1.0.0.nupkg" --api-key --source https://api.nuget.org/v3/index.json
+dotnet nuget push "QueryBuilder.Mongo\bin\Release\DotnetStandardQueryBuilder.Mongo.1.0.0.nupkg" --api-key --source https://api.nuget.org/v3/index.json
