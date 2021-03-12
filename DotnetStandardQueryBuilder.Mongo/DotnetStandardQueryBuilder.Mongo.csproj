@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Description>DotnetStandardQueryBuilder.Mongo package contains methods to build Mongo database query from query builder request</Description>
+    <Copyright>Nikhil Sarvaiye - Personal</Copyright>
+    <PackageProjectUrl>https://github.com/nikhilsarvaiye/DotnetStandardQueryBuilder</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nikhilsarvaiye/DotnetStandardQueryBuilder</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <PackageTags>querybuilder,odata,aspnetcore,webapi,query,mongo,mongodb,sql,filter,dynamic,dotnet,standard</PackageTags>
+    <PackageReleaseNotes>A OData compliant QueyBuilder for net and aspnet core application for different MondoDB, SQL, Azure Cosmos Db databases</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageId>DotnetStandardQueryBuilder.Mongo</PackageId>
+    <Product>DotnetStandardQueryBuilder.Mongo</Product>
+    <Authors>DotnetStandardQueryBuilder.Mongo</Authors>
+    <Company>DotnetStandardQueryBuilder.Mongo</Company>
+    <AssemblyName>DotnetStandardQueryBuilder.Mongo</AssemblyName>
+    <Version>1.0.2</Version>
+    <RootNamespace>DotnetStandardQueryBuilder.Mongo</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.11.6" />
+    <PackageReference Include="MongoDB.Driver" Version="2.11.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DotnetStandardQueryBuilder.Core\DotnetStandardQueryBuilder.Core.csproj" />
+  </ItemGroup>
+</Project>
