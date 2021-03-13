@@ -1,6 +1,7 @@
-﻿namespace DotnetStandardQueryBuilder.Sql
+﻿namespace DotnetStandardQueryBuilder.AzureCosmosSql
 {
     using DotnetStandardQueryBuilder.Core;
+    using DotnetStandardQueryBuilder.Sql;
     using System;
     using System.Linq;
 
@@ -20,7 +21,7 @@
                 return _sqlQuery;
             }
 
-            var orderByClause = string.Join(",", _sqlQuery.Request.Sorts.ToList().Select(x => $"{x.Property} {(x.Direction == SortDirection.Ascending ? string.Empty : "DESC")}"));
+            var orderByClause = string.Join(",", _sqlQuery.Request.Sorts.ToList().Select(x => $"{AzureCosmosSqlQueryBuilder.Alias}.{x.Property} {(x.Direction == SortDirection.Ascending ? "ASC" : "DSC")}"));
             _sqlQuery.OrderByClause = $@" {orderByClause}";
             return _sqlQuery;
         }

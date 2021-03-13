@@ -1,6 +1,8 @@
 ﻿namespace DotnetStandardQueryBuilder.Core
 {
+    using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
 
     public static class Extensions
@@ -27,6 +29,16 @@
             }
 
             return dictionary;
+        }
+
+        public static string To_yyyy_MM_dd(this DateTime dateTime)
+        {
+            return $"{dateTime:yyyy-MM-dd}";
+        }
+
+        public static DateTime ParseUTCDateObject(this object dateObject)
+        {
+            return DateTime.Parse(dateObject?.ToString(), null, DateTimeStyles.AssumeUniversal);
         }
     }
 }

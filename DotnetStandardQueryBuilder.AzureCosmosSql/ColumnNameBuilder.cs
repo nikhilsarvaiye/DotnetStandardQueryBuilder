@@ -1,4 +1,4 @@
-﻿namespace DotnetStandardQueryBuilder.Sql
+﻿namespace DotnetStandardQueryBuilder.AzureCosmosSql
 {
     using System;
     
@@ -13,7 +13,7 @@
 
         public string Build()
         {
-            return _property;
+            return $"{AzureCosmosSqlQueryBuilder.Alias}.{_property}";
         }
     }
 }

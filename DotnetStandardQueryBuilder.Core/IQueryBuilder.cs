@@ -1,4 +1,4 @@
-﻿namespace QueryBuilder
+﻿namespace DotnetStandardQueryBuilder
 {
     using DotnetStandardQueryBuilder.Core;
     

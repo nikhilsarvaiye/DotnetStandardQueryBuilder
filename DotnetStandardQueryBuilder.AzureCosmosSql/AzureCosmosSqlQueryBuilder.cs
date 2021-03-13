@@ -2,20 +2,19 @@
 {
     using DotnetStandardQueryBuilder.Core;
     using DotnetStandardQueryBuilder.Sql;
-    using DotnetStandardQueryBuilder.Sql.Extensions;
+    using DotnetStandardQueryBuilder.AzureCosmosSql;
     using System;
     using System.Collections.Generic;
 
-    public class SqlQueryBuilder : IQueryBuilder<SqlQueryBuilder, SqlQuery>
+    public class AzureCosmosSqlQueryBuilder : IQueryBuilder<AzureCosmosSqlQueryBuilder, SqlQuery>
     {
-        private string _tableName;
+        public const string Alias = "x";
 
         public IRequest Request { get; }
 
-        public SqlQueryBuilder(IRequest request, string tableName)
+        public AzureCosmosSqlQueryBuilder(IRequest request)
         {
             Request = request ?? throw new ArgumentNullException(nameof(request));
-            _tableName = tableName ?? throw new ArgumentNullException(nameof(tableName));
         }
 
         public SqlQuery Query()
@@ -25,7 +24,7 @@
                 return null;
             }
 
-            var sqlExpression = new SqlExpression(Request).Where().Select(_tableName).OrderBy().Paginate();
+            var sqlExpression = new SqlExpression(Request).Where().Select().OrderBy();
 
             return new SqlQuery
             {
@@ -46,7 +45,7 @@
 
             Request.Select = new List<string>() { "COUNT(1)" };
 
-            var sqlExpression = new SqlExpression(Request).Where().Select(_tableName).OrderBy().Paginate();
+            var sqlExpression = new SqlExpression(Request).Where().Select().OrderBy();
 
             return new SqlQuery
             {

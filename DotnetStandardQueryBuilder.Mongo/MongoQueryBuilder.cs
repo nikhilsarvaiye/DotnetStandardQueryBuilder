@@ -4,7 +4,6 @@
     using DotnetStandardQueryBuilder.Core;
     using DotnetStandardQueryBuilder.Mongo.Extensions;
     using System;
-    using QueryBuilder;
 
     public class MongoQueryBuilder<T> : IQueryBuilder<T, IFindFluent<T, T>>
         where T : class

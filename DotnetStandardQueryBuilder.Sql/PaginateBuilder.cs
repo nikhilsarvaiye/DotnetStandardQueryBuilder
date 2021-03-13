@@ -2,7 +2,7 @@
 {
     using System;
 
-    internal class PaginateBuilder
+    public class PaginateBuilder
     {
         private readonly SqlExpression _sqlQuery;
 

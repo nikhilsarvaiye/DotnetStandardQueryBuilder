@@ -2,10 +2,10 @@
 {
     using System.Collections.Generic;
     
-    internal class WhereClause
+    public class WhereClause
     {
-        internal string Expression { get; set; }
+        public string Expression { get; set; }
 
-        internal List<KeyValuePair<string, object>> Values { get; set; }
+        public List<KeyValuePair<string, object>> Values { get; set; }
     }
 }
