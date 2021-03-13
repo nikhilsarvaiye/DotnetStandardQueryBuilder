@@ -14,7 +14,7 @@
 
         public FilterDefinitionBuilder(IFilter filter)
         {
-            _filter = filter ?? throw new ArgumentNullException(nameof(filter));
+            _filter = filter;
         }
 
         internal FilterDefinition<T> Build<T>()
