@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetStandardQueryBuilder.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetStandardQueryBuilder.UnitTest", "DotnetStandardQueryBuilder.UnitTest\DotnetStandardQueryBuilder.UnitTest.csproj", "{68CE1731-F5B2-4E6A-9003-1AA6FFD1CE5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetStandardQueryBuilder.AzureCosmosSql", "DotnetStandardQueryBuilder.AzureCosmosSql\DotnetStandardQueryBuilder.AzureCosmosSql.csproj", "{BCA2F9D3-B18D-47FB-A462-8FBE95E0C68A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetStandardQueryBuilder.AzureCosmosSql", "DotnetStandardQueryBuilder.AzureCosmosSql\DotnetStandardQueryBuilder.AzureCosmosSql.csproj", "{BCA2F9D3-B18D-47FB-A462-8FBE95E0C68A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DC9625A0-CCB1-4A8D-B8AD-B9877B4111BA}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

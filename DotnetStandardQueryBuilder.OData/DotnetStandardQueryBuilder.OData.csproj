@@ -6,18 +6,18 @@
     <Authors>Nikhil Sarvaiye</Authors>
     <Description>DotnetStandardQueryBuilder.OData package contains methods to build query request from http request query string</Description>
     <Copyright>Nikhil Sarvaiye - Personal</Copyright>
-    <PackageProjectUrl>https://github.com/nikhilsarvaiye/DotnetStandardQueryBuilder</PackageProjectUrl>
+    <PackageProjectUrl>https://nikhilsarvaiye.github.io/DotnetStandardQueryBuilder/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nikhilsarvaiye/DotnetStandardQueryBuilder</RepositoryUrl>
     <PackageTags>querybuilder,odata,aspnetcore,webapi,query,mongo,mongodb,sql,filter,dynamic,dotnet,standard</PackageTags>
     <RepositoryType>Github</RepositoryType>
-    <PackageReleaseNotes>A OData compliant QueyBuilder for net and aspnet core application for different MongoDB, SQL databases</PackageReleaseNotes>
+    <PackageReleaseNotes>A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL, Azure Cosmos Db database</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageId>DotnetStandardQueryBuilder.OData</PackageId>
     <Product>DotnetStandardQueryBuilder.OData</Product>
     <AssemblyName>DotnetStandardQueryBuilder.OData</AssemblyName>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <RootNamespace>DotnetStandardQueryBuilder.OData</RootNamespace>
   </PropertyGroup>
 
