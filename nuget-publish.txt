@@ -1,3 +1,4 @@
-dotnet nuget push "QueryBuilder.Core\bin\Release\DotnetStandardQueryBuilder.Core.1.0.2.nupkg" --api-key oy2ecbjujn535dbnmcnqos4ykuuzk7leffki5jnrwfzc5e --source https://api.nuget.org/v3/index.json
-dotnet nuget push "QueryBuilder.OData\bin\Release\DotnetStandardQueryBuilder.OData.1.0.2.nupkg" --api-key oy2ecbjujn535dbnmcnqos4ykuuzk7leffki5jnrwfzc5e --source https://api.nuget.org/v3/index.json
-dotnet nuget push "QueryBuilder.Mongo\bin\Release\DotnetStandardQueryBuilder.Mongo.1.0.2.nupkg" --api-key oy2ecbjujn535dbnmcnqos4ykuuzk7leffki5jnrwfzc5e --source https://api.nuget.org/v3/index.json
+dotnet nuget push "DotnetStandardQueryBuilder.Core\bin\Release\DotnetStandardQueryBuilder.Core.1.0.2.nupkg" --api-key oylucky2ecbjujn535dbnmcnqos4ykuuzk7leffki5jnrwfzc5e --source https://api.nuget.org/v3/index.json
+dotnet nuget push "DotnetStandardQueryBuilder.OData\bin\Release\DotnetStandardQueryBuilder.OData.1.0.2.nupkg" --api-key oylucky2ecbjujn535dbnmcnqos4ykuuzk7leffki5jnrwfzc5e --source https://api.nuget.org/v3/index.json
+dotnet nuget push "DotnetStandardQueryBuilder.Mongo\bin\Release\DotnetStandardQueryBuilder.Mongo.1.0.2.nupkg" --api-key oylucky2ecbjujn535dbnmcnqos4ykuuzk7leffki5jnrwfzc5e --source https://api.nuget.org/v3/index.json
+dotnet nuget push "DotnetStandardQueryBuilder.Sql\bin\Release\DotnetStandardQueryBuilder.Sql.1.0.2.nupkg" --api-key oylucky2ecbjujn535dbnmcnqos4ykuuzk7leffki5jnrwfzc5e --source https://api.nuget.org/v3/index.json

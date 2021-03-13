@@ -11,7 +11,7 @@
         public PaginateBuilder(int page, int? pageSize)
         {
             _page = page;
-            _pageSize = pageSize ?? throw new ArgumentNullException(nameof(pageSize));
+            _pageSize = pageSize;
         }
 
         public IFindFluent<T, T> Build<T>(IFindFluent<T, T> query)

@@ -15,6 +15,8 @@
         List<Sort> Sorts { get; set; }
 
         List<string> Select { get; set; }
+
+        bool Distinct { get; set; }
     }
 
     public interface IRequestTest<T, T2>

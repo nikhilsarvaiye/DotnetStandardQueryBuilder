@@ -10,25 +10,25 @@
         public static IFindFluent<T, T> Query<T>(this IMongoCollection<T> collection, IRequest request)
             where T : class
         {
-            return new MongoQueryBuilder<T>(request).Query(collection);
+            return new MongoQueryBuilder<T>(request, collection).Query();
         }
 
         public static IFindFluent<T, T> QueryCount<T>(this IMongoCollection<T> collection, IRequest request)
             where T : class
         {
-            return new MongoQueryBuilder<T>(request).QueryCount(collection);
+            return new MongoQueryBuilder<T>(request, collection).QueryCount();
         }
 
         public static IFindFluent<T, T> Query<T>(this IRequest request, IMongoCollection<T> collection)
             where T : class
         {
-            return new MongoQueryBuilder<T>(request).Query(collection);
+            return new MongoQueryBuilder<T>(request, collection).Query();
         }
 
         public static IFindFluent<T, T> QueryCount<T>(this IRequest request, IMongoCollection<T> collection)
             where T : class
         {
-            return new MongoQueryBuilder<T>(request).QueryCount(collection);
+            return new MongoQueryBuilder<T>(request, collection).QueryCount();
         }
 
         public static FilterDefinition<T> ToFilterDefinition<T>(this IFilter filter)

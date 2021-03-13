@@ -10,65 +10,55 @@
     {
         internal static IFilter Parse(this FilterClause filterClause)
         {
-            if (filterClause == null)
-            {
-                return null;
-            }
-
-            return new List<IFilter>().Parse(filterClause.Expression).FirstOrDefault();
+            return filterClause?.Expression.Parse();
         }
 
-        private static List<IFilter> Parse(this List<IFilter> filters, QueryNode queryNode)
+        private static IFilter Parse(this QueryNode queryNode)
         {
-            filters ??= new List<IFilter>();
-
             switch (queryNode.GetType().Name)
             {
-                case nameof(ConvertNode): return filters.Parse((queryNode as ConvertNode).Source);
+                case nameof(ConvertNode): return (queryNode as ConvertNode).Source.Parse();
                 case nameof(UnaryOperatorNode):
                     {
-                        var unaryOperator = queryNode as UnaryOperatorNode;
-                        var filterItems = filters.Parse(unaryOperator.Operand);
-                        if (filters.Count >= 1)
+                        var unaryOperatorNode = (queryNode as UnaryOperatorNode);
+                        var unaryOperatorFilter = unaryOperatorNode.Operand.Parse();
+                        return new CompositeFilter()
                         {
-                            filters = filters.WrapUnaryFilters(unaryOperator.OperatorKind.ToLogicalOperator());
-                        }
-                    }; break;
+                            LogicalOperator = unaryOperatorNode.OperatorKind.ToLogicalOperator(),
+                            Filters = new List<IFilter>() { unaryOperatorFilter }
+                        };
+                    };
                 case nameof(BinaryOperatorNode):
                     {
                         var binaryOperator = queryNode as BinaryOperatorNode;
 
-                        var binaryFilters = new List<IFilter>();
-                        var leftFilters = new List<IFilter>().Parse(binaryOperator.Left);
-                        var rightFilters = new List<IFilter>().Parse(binaryOperator.Right);
-
-                        binaryFilters.AddRange(leftFilters);
-                        binaryFilters.AddRange(rightFilters);
-
-                        if (binaryOperator.OperatorKind.IsLogicalOperator() && binaryFilters.Count >= 2)
+                        if (binaryOperator.OperatorKind.IsLogicalOperator())
                         {
-                            filters = binaryFilters.ClubFilters(binaryOperator.OperatorKind.ToLogicalOperator());
-                        }
+                            var filters = new List<IFilter>();
+                            var leftFilter = binaryOperator.Left.Parse();
+                            var rightFilter = binaryOperator.Right.Parse();
+                            filters.Add(leftFilter);
+                            filters.Add(rightFilter);
 
-                        var property = binaryOperator.Left.GetProperty();
-                        var value = binaryOperator.Right.GetValue();
-                        if (property != null && binaryOperator.OperatorKind.IsFilterOperator())
+                            return new CompositeFilter()
+                            {
+                                LogicalOperator = binaryOperator.OperatorKind.ToLogicalOperator(),
+                                Filters = filters
+                            };
+                        } 
+                        else
                         {
-                            filters.Add(new Filter()
+                            var property = binaryOperator.Left.GetProperty();
+                            var value = binaryOperator.Right.GetValue();
+                            
+                            return new Filter()
                             {
                                 Operator = binaryOperator.OperatorKind.ToFilterOperator(),
                                 Property = property,
                                 Value = value
-                            });
-                        }
-
-                        if (binaryOperator.OperatorKind.IsLogicalOperator() && filters.Count >= 2)
-                        {
-                            filters = filters.ClubFilters(binaryOperator.OperatorKind.ToLogicalOperator());
+                            };
                         }
                     };
-                    break;
-
                 case nameof(SingleValueFunctionCallNode):
                     {
                         var singleValueFunctionCallNode = (queryNode as SingleValueFunctionCallNode);
@@ -76,34 +66,33 @@
 
                         var property = parameters.FirstOrDefault().GetProperty();
                         var value = parameters.LastOrDefault().GetValue();
-                        filters.Add(new Filter()
+                        
+                        return new Filter()
                         {
                             Operator = singleValueFunctionCallNode.Name.ToFilterOperator(),
                             Property = property,
                             Value = value
-                        });
-                    }; break;
+                        };
+                    };
                 case nameof(InNode):
                     {
                         var inNode = queryNode as InNode;
 
                         var property = inNode.Left.GetProperty();
                         var value = inNode.Right.GetValue();
-                        if (property != null)
+                        
+                        return new Filter()
                         {
-                            filters.Add(new Filter()
-                            {
-                                Operator = inNode.Kind.ToFilterOperator(),
-                                Property = property,
-                                Value = value
-                            });
-                        }
-                    }; break;
+                            Operator = inNode.Kind.ToFilterOperator(),
+                            Property = property,
+                            Value = value
+                        };
+                    };
             }
 
-            return filters;
+            return null;
         }
-
+        
         private static string GetProperty(this QueryNode queryNode)
         {
             switch (queryNode.GetType().Name)
@@ -146,53 +135,6 @@
             return null;
         }
 
-        private static List<IFilter> ClubFilters(this List<IFilter> filters, LogicalOperator logicalOperator)
-        {
-            if (filters.Count <= 1)
-            {
-                return filters;
-            }
-
-            var clubFilters = new List<IFilter>();
-
-            foreach (var range in Enumerable.Range(0, filters.Count - 2).Select(x => x))
-            {
-                clubFilters.Add(filters[range]);
-            }
-
-            clubFilters.Add(new CompositeFilter()
-            {
-                LogicalOperator = logicalOperator,
-                Filters = new List<IFilter>()
-                                    {
-                                        filters[filters.Count - 2],
-                                        filters.LastOrDefault()
-                                    }
-            });
-            return clubFilters;
-        }
-
-        private static List<IFilter> WrapUnaryFilters(this List<IFilter> filters, LogicalOperator logicalOperator)
-        {
-            if (filters.Count == 0)
-            {
-                return filters;
-            }
-
-            var unaryFilters = new List<IFilter>
-            {
-                new CompositeFilter()
-                {
-                    LogicalOperator = logicalOperator,
-                    Filters = new List<IFilter>()
-                                    {
-                                        filters.FirstOrDefault()
-                                    }
-                }
-            };
-            return unaryFilters;
-        }
-
         private static bool IsLogicalOperator(this BinaryOperatorKind binaryOperatorKind)
         {
             switch (binaryOperatorKind)
@@ -223,21 +165,6 @@
             }
 
             throw new NotImplementedException(nameof(unaryOperatorKind));
-        }
-
-        private static bool IsFilterOperator(this BinaryOperatorKind binaryOperatorKind)
-        {
-            switch (binaryOperatorKind)
-            {
-                case BinaryOperatorKind.And: return false;
-                case BinaryOperatorKind.Or: return false;
-                case BinaryOperatorKind.Add: return false;
-                case BinaryOperatorKind.Subtract: return false;
-                case BinaryOperatorKind.Multiply: return false;
-                case BinaryOperatorKind.Divide: return false;
-            }
-
-            return true;
         }
 
         private static FilterOperator ToFilterOperator(this BinaryOperatorKind binaryOperatorKind)

@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetStandardQueryBuilder.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetStandardQueryBuilder.OData", "DotnetStandardQueryBuilder.OData\DotnetStandardQueryBuilder.OData.csproj", "{AFDA2EE1-3299-46A6-B60D-3195E50D6B92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetStandardQueryBuilder.Sql", "DotnetStandardQueryBuilder.Sql\DotnetStandardQueryBuilder.Sql.csproj", "{F00811C9-D5F5-4BB1-935E-8429499AC732}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetStandardQueryBuilder.UnitTest", "DotnetStandardQueryBuilder.UnitTest\DotnetStandardQueryBuilder.UnitTest.csproj", "{68CE1731-F5B2-4E6A-9003-1AA6FFD1CE5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{AFDA2EE1-3299-46A6-B60D-3195E50D6B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFDA2EE1-3299-46A6-B60D-3195E50D6B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFDA2EE1-3299-46A6-B60D-3195E50D6B92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F00811C9-D5F5-4BB1-935E-8429499AC732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F00811C9-D5F5-4BB1-935E-8429499AC732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F00811C9-D5F5-4BB1-935E-8429499AC732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F00811C9-D5F5-4BB1-935E-8429499AC732}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68CE1731-F5B2-4E6A-9003-1AA6FFD1CE5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68CE1731-F5B2-4E6A-9003-1AA6FFD1CE5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68CE1731-F5B2-4E6A-9003-1AA6FFD1CE5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68CE1731-F5B2-4E6A-9003-1AA6FFD1CE5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

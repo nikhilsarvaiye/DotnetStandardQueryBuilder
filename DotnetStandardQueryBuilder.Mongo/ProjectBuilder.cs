@@ -11,7 +11,7 @@
 
         public ProjectBuilder(List<string> select)
         {
-            _select = select ?? throw new ArgumentNullException(nameof(select));
+            _select = select;
         }
         
         public IFindFluent<T, T> Build<T>(IFindFluent<T, T> query)

@@ -2,8 +2,12 @@
 {
     using DotnetStandardQueryBuilder.Core;
     
-    public interface IQueryBuilder<T>
+    public interface IQueryBuilder<T, R>
     {
-        T Build(IRequest request);
+        IRequest Request { get; }
+
+        R Query();
+
+        R QueryCount();
     }
 }

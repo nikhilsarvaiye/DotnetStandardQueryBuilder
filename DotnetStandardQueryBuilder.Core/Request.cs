@@ -15,5 +15,7 @@
         public List<Sort> Sorts { get; set; }
 
         public List<string> Select { get; set; }
+
+        public bool Distinct { get; set; }
     }
 }

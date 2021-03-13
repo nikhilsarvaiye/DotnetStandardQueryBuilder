@@ -4,39 +4,43 @@
     using DotnetStandardQueryBuilder.Core;
     using DotnetStandardQueryBuilder.Mongo.Extensions;
     using System;
+    using QueryBuilder;
 
-    public class MongoQueryBuilder<T>
+    public class MongoQueryBuilder<T> : IQueryBuilder<T, IFindFluent<T, T>>
         where T : class
     {
-        private IRequest _request;
+        private IMongoCollection<T> _collection;
 
-        public MongoQueryBuilder(IRequest request)
+        public IRequest Request { get; }
+
+        public MongoQueryBuilder(IRequest request, IMongoCollection<T> collection)
         {
-            _request = request ?? throw new ArgumentNullException(nameof(request));
+            Request = request ?? throw new ArgumentNullException(nameof(request));
+            _collection = collection ?? throw new ArgumentNullException(nameof(collection));
         }
 
-        public IFindFluent<T, T> Query(IMongoCollection<T> collection)
+        public IFindFluent<T, T> Query()
         {
-            if (_request == null)
+            if (Request == null)
             {
-                return collection.Find(_ => true);
+                return _collection.Find(_ => true);
             }
 
-            var filterDefinition = _request.Filter.ToFilterDefinition<T>();
+            var filterDefinition = Request.Filter.ToFilterDefinition<T>();
 
-            return collection.Find(filterDefinition)
-                .Paginate(_request.Page, _request.PageSize)
-                .Sort(_request.Sorts)
-                .Project(_request.Select);
+            return _collection.Find(filterDefinition)
+                .Paginate(Request.Page, Request.PageSize)
+                .Sort(Request.Sorts)
+                .Project(Request.Select);
         }
 
-        public IFindFluent<T, T> QueryCount<T>(IMongoCollection<T> collection)
+        public IFindFluent<T, T> QueryCount()
         {
-            var filterDefinition = _request.Filter.ToFilterDefinition<T>();
+            var filterDefinition = Request.Filter.ToFilterDefinition<T>();
 
-            return collection.Find(filterDefinition)
-                .Sort(_request.Sorts)
-                .Project(_request.Select);
+            return _collection.Find(filterDefinition)
+                .Sort(Request.Sorts)
+                .Project(Request.Select);
         }
     }
 }

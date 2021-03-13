@@ -11,7 +11,7 @@
 
         public SortBuilder(List<Sort> sorts)
         {
-            _sorts = sorts ?? throw new ArgumentNullException(nameof(sorts));
+            _sorts = sorts;
         }
 
         public IFindFluent<T, T> Build<T>(IFindFluent<T, T> query)

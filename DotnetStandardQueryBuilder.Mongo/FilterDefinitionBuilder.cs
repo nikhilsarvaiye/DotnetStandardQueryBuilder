@@ -21,78 +21,41 @@
         {
             if (_filter != null)
             {
-                return Build<T>(null, new List<IFilter> { _filter });
+                return Build<T>(_filter);
             }
             return Builders<T>.Filter.Empty;
         }
 
-        private FilterDefinition<T> Build<T>(FilterDefinition<T> filterDefinition, List<IFilter> filters, LogicalOperator logicalOperator = LogicalOperator.And)
 
+        private FilterDefinition<T> Build<T>(IFilter filter)
         {
-            if (filters == null)
+            if (filter == null)
             {
-                return null;
+                return Builders<T>.Filter.Empty;
             }
 
-            var filterDefinitions = new List<FilterDefinition<T>>();
-            foreach (var filterItem in filters)
+            switch (filter)
             {
-                switch (filterItem)
-                {
-                    case CompositeFilter _:
+                case CompositeFilter _:
 
-                        var compositeFilter = filterItem as CompositeFilter;
+                    var compositeFilter = filter as CompositeFilter;
 
-                        filterDefinition = Build(filterDefinition,
-                                                                    compositeFilter?.Filters,
-                                                                    compositeFilter.LogicalOperator);
-                        filterDefinitions.Add(filterDefinition);
-                        break;
+                    var compositeParameters = new Dictionary<string, object>();
+                    var filterDefinitions = compositeFilter.Filters.Where(x => x != null).Select(x => Build<T>(x)).ToList();
 
-                    case Filter _:
+                    return BuildCompositeFilterDefinition<T>(compositeFilter.LogicalOperator, filterDefinitions);
 
-                        var filter = filterItem as Filter;
-                        filterDefinitions.Add(GetFilterExpression<T>(filter));
-                        break;
-                }
+                case Filter _:
+
+                    var _filter = filter as Filter;
+
+                    return GetFilterExpression<T>(_filter);
             }
 
-            if (filterDefinitions.Count == 1)
-            {
-                if (logicalOperator == LogicalOperator.Not)
-                {
-                    return GetFilterExpression<T>(logicalOperator, filterDefinitions);
-                }
-                return filterDefinitions.FirstOrDefault();
-            }
-            else if (filterDefinitions.Count == 2)
-            {
-                return GetFilterExpression<T>(logicalOperator, filterDefinitions);
-            }
-
-            return filterDefinition;
+            return Builders<T>.Filter.Empty;
         }
 
-        private List<FilterDefinition<T>> ClubFilters<T>(List<FilterDefinition<T>> filterDefinitions, LogicalOperator logicalOperator)
-
-        {
-            if (filterDefinitions.Count <= 1)
-            {
-                return filterDefinitions;
-            }
-
-            var clubFilters = new List<FilterDefinition<T>>();
-
-            foreach (var range in Enumerable.Range(0, filterDefinitions.Count - 2).Select(x => x))
-            {
-                clubFilters.Add(filterDefinitions[range]);
-            }
-
-            clubFilters.Add(GetFilterExpression<T>(logicalOperator, filterDefinitions));
-            return clubFilters;
-        }
-
-        private FilterDefinition<T> GetFilterExpression<T>(LogicalOperator logicalOperator, IEnumerable<FilterDefinition<T>> filters)
+        private FilterDefinition<T> BuildCompositeFilterDefinition<T>(LogicalOperator logicalOperator, IEnumerable<FilterDefinition<T>> filters)
 
         {
             switch (logicalOperator)

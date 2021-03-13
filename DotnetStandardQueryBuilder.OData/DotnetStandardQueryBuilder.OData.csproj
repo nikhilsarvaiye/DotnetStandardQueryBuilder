@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/nikhilsarvaiye/DotnetStandardQueryBuilder</RepositoryUrl>
     <PackageTags>querybuilder,odata,aspnetcore,webapi,query,mongo,mongodb,sql,filter,dynamic,dotnet,standard</PackageTags>
     <RepositoryType>Github</RepositoryType>
-    <PackageReleaseNotes>A OData compliant QueyBuilder for net and aspnet core application for different MondoDB, SQL, Azure Cosmos Db databases</PackageReleaseNotes>
+    <PackageReleaseNotes>A OData compliant QueyBuilder for net and aspnet core application for different MongoDB, SQL databases</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
