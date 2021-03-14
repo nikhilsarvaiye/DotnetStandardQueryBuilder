@@ -1,7 +1,7 @@
 ﻿namespace DotnetStandardQueryBuilder.Sql
 {
     using System.Collections.Generic;
-    
+
     public class WhereClause
     {
         public string Expression { get; set; }

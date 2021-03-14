@@ -1,8 +1,8 @@
 ﻿namespace DotnetStandardQueryBuilder
 {
+    using DotnetStandardQueryBuilder.AzureCosmosSql;
     using DotnetStandardQueryBuilder.Core;
     using DotnetStandardQueryBuilder.Sql;
-    using DotnetStandardQueryBuilder.AzureCosmosSql;
     using System;
     using System.Collections.Generic;
 

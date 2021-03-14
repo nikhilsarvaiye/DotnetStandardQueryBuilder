@@ -1,6 +1,5 @@
 ﻿namespace DotnetStandardQueryBuilder.Core
 {
-
     public class Filter : IFilter
     {
         public string Property { get; set; }

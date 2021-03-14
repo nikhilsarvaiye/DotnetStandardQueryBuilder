@@ -1,7 +1,7 @@
 ﻿namespace DotnetStandardQueryBuilder
 {
     using DotnetStandardQueryBuilder.Core;
-    
+
     public interface IQueryBuilder<T, R>
     {
         IRequest Request { get; }

@@ -1,8 +1,7 @@
 ﻿namespace DotnetStandardQueryBuilder.Mongo
 {
-    using MongoDB.Bson;
     using System;
-    
+
     internal class BsonPropertyBuilder
     {
         private const string _idPropertyName = "_id";

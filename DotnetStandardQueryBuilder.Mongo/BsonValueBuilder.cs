@@ -1,11 +1,11 @@
 ﻿namespace DotnetStandardQueryBuilder.Mongo
 {
-    using MongoDB.Bson;
     using DotnetStandardQueryBuilder.Mongo.Extensions;
+    using MongoDB.Bson;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    
+
     internal class BsonValueBuilder
     {
         private readonly object _value;

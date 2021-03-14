@@ -20,7 +20,7 @@ namespace DotnetStandardQueryBuilder.UnitTest.Mongo
             var mongoQueryBuilder = new MongoQueryBuilder<BsonDocument>(SampleRequest.Full, collection);
 
             var mongoQuery = mongoQueryBuilder.Query();
-            
+
             // new {find({ "$or" : [{ "_id" : 1 }, { "parentId" : { "$in" : [1234, 4554, 6687] } }, { "value" : { "$gt" : 100 }, "firstName" : { "$ne" : "firstName" } }], "name" : { "$ne" : "name" } }, { "name" : 1 }).sort({ "name" : -1 }).skip(20).limit(20)}
             // old {find({ "value" : { "$gt" : 100 }, "firstName" : { "$ne" : "firstName" }, "name" : { "$ne" : "name" } }, { "name" : 1 }).sort({ "name" : -1 }).skip(20).limit(20)}
 

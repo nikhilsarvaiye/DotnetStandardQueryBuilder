@@ -1,8 +1,6 @@
 ﻿namespace DotnetStandardQueryBuilder.Mongo
 {
     using MongoDB.Driver;
-    using DotnetStandardQueryBuilder.Core;
-    using System;
     using System.Collections.Generic;
 
     internal class ProjectBuilder
@@ -13,7 +11,7 @@
         {
             _select = select;
         }
-        
+
         public IFindFluent<T, T> Build<T>(IFindFluent<T, T> query)
         {
             if (_select == null)

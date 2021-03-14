@@ -1,9 +1,9 @@
 ﻿namespace DotnetStandardQueryBuilder.OData
 {
-    using Microsoft.OData.UriParser;
     using DotnetStandardQueryBuilder.Core;
+    using Microsoft.OData.UriParser;
     using System.Collections.Generic;
-    
+
     internal static class OrderByParser
     {
         internal static List<Sort> Parse(this OrderByClause orderByClause)

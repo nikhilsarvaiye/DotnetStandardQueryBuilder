@@ -39,6 +39,10 @@ namespace DotnetStandardQueryBuilder.UnitTest.Mongo
             result = new MemoryListQueryBuilder<SampleModel>(SampleRequest.SimpleSort, SampleModel.SampleItems).Query();
 
             Assert.AreEqual(result.Count, 3);
+
+            var count = new MemoryListQueryBuilder<SampleModel>(SampleRequest.PageSizeNull, SampleModel.SampleItems).QueryCount();
+
+            Assert.AreEqual(count, 3);
         }
     }
 }

@@ -3,7 +3,7 @@
     using DotnetStandardQueryBuilder.Core;
     using System;
     using System.Collections.Generic;
-    
+
     public class SqlExpression
     {
         public IRequest Request { get; }

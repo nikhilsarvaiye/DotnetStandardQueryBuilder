@@ -64,6 +64,15 @@
             }
         };
 
+        public static Request PageSizeNull = new Request
+        {
+            Select = new List<string> { "id", "name" },
+            Page = 1,
+            PageSize = null,
+            Sorts = null,
+            Filter = null,
+        };
+
         public static Request SimpleEq = new Request
         {
             Select = new List<string> { "id", "name" },

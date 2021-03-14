@@ -1,9 +1,9 @@
 ﻿namespace DotnetStandardQueryBuilder.Mongo
 {
-    using MongoDB.Bson;
-    using MongoDB.Driver;
     using DotnetStandardQueryBuilder.Core;
     using DotnetStandardQueryBuilder.Mongo.Extensions;
+    using MongoDB.Bson;
+    using MongoDB.Driver;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -25,7 +25,6 @@
             }
             return Builders<T>.Filter.Empty;
         }
-
 
         private FilterDefinition<T> Build<T>(IFilter filter)
         {

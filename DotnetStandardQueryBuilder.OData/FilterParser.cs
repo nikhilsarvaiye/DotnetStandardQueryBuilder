@@ -1,7 +1,7 @@
 ﻿namespace DotnetStandardQueryBuilder.OData
 {
-    using Microsoft.OData.UriParser;
     using DotnetStandardQueryBuilder.Core;
+    using Microsoft.OData.UriParser;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -45,12 +45,12 @@
                                 LogicalOperator = binaryOperator.OperatorKind.ToLogicalOperator(),
                                 Filters = filters
                             };
-                        } 
+                        }
                         else
                         {
                             var property = binaryOperator.Left.GetProperty();
                             var value = binaryOperator.Right.GetValue();
-                            
+
                             return new Filter()
                             {
                                 Operator = binaryOperator.OperatorKind.ToFilterOperator(),
@@ -66,7 +66,7 @@
 
                         var property = parameters.FirstOrDefault().GetProperty();
                         var value = parameters.LastOrDefault().GetValue();
-                        
+
                         return new Filter()
                         {
                             Operator = singleValueFunctionCallNode.Name.ToFilterOperator(),
@@ -80,7 +80,7 @@
 
                         var property = inNode.Left.GetProperty();
                         var value = inNode.Right.GetValue();
-                        
+
                         return new Filter()
                         {
                             Operator = inNode.Kind.ToFilterOperator(),
@@ -92,7 +92,7 @@
 
             return null;
         }
-        
+
         private static string GetProperty(this QueryNode queryNode)
         {
             switch (queryNode.GetType().Name)

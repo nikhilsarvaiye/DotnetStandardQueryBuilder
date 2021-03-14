@@ -14,7 +14,10 @@
         public SortBuilder(List<Sort> sorts)
         {
             _sorts = sorts;
-            _sorts.Reverse();
+            if (_sorts != null)
+            {
+                _sorts.Reverse();
+            }
         }
 
         public List<T> Build<T>(List<T> memoryList)

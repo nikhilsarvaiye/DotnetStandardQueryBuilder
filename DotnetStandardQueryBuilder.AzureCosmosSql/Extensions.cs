@@ -34,7 +34,7 @@
         {
             return new ColumnNameBuilder(property).Build();
         }
-        
+
         public static object ToValue(this object value)
         {
             return new ValueBuilder(value).Build();

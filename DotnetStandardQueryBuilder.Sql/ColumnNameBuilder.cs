@@ -1,7 +1,7 @@
 ﻿namespace DotnetStandardQueryBuilder.Sql
 {
     using System;
-    
+
     public class ColumnNameBuilder
     {
         private readonly string _property;

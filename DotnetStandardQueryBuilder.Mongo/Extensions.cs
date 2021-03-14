@@ -1,8 +1,8 @@
 ﻿namespace DotnetStandardQueryBuilder.Mongo.Extensions
 {
+    using DotnetStandardQueryBuilder.Core;
     using MongoDB.Bson;
     using MongoDB.Driver;
-    using DotnetStandardQueryBuilder.Core;
     using System.Collections.Generic;
 
     public static class Extensions
@@ -35,7 +35,7 @@
         {
             return new FilterDefinitionBuilder(filter).Build<T>();
         }
-        
+
         public static IFindFluent<T, T> Project<T>(this IFindFluent<T, T> query, List<string> select)
         {
             return new ProjectBuilder(select).Build(query);
@@ -55,7 +55,7 @@
         {
             return new BsonPropertyBuilder(property).Build();
         }
-        
+
         public static BsonValue ToBsonValue(this object value)
         {
             return new BsonValueBuilder(value).Build();

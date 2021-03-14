@@ -1,7 +1,6 @@
 ﻿namespace DotnetStandardQueryBuilder.Sql.Extensions
 {
     using DotnetStandardQueryBuilder.Core;
-    using System.Collections.Generic;
 
     public static class Extensions
     {
@@ -39,7 +38,7 @@
         {
             return new ColumnNameBuilder(property).Build();
         }
-        
+
         public static object ToValue(this object value)
         {
             return new ValueBuilder(value).Build();

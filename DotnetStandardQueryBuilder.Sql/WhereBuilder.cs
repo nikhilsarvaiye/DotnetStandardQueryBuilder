@@ -80,42 +80,55 @@
                 case FilterOperator.IsEqualTo:
                     expression = $"{filterColumn}={filterValue.Key}";
                     break;
+
                 case FilterOperator.IsNotEqualTo:
                     expression = $"{filterColumn}!={filterValue.Key}";
                     break;
+
                 case FilterOperator.IsGreaterThan:
                     expression = $"{filterColumn}>{filterValue.Key}";
                     break;
+
                 case FilterOperator.IsGreaterThanOrEqualTo:
                     expression = $"{filterColumn}>{filterValue.Key}";
                     break;
+
                 case FilterOperator.IsLessThan:
                     expression = $"{filterColumn}<{filterValue.Key}";
                     break;
+
                 case FilterOperator.IsLessThanOrEqualTo:
                     expression = $"{filterColumn}<={filterValue.Key}";
                     break;
+
                 case FilterOperator.Contains:
                     expression = $"CONTAINS(LOWER({filterColumn}),LOWER({filterValue.Key}))";
                     break;
+
                 case FilterOperator.StartsWith:
                     expression = $"STARTSWITH(LOWER({filterColumn}),LOWER({filterValue.Key}))";
                     break;
+
                 case FilterOperator.EndsWith:
                     expression = $"ENDSWITH(LOWER({filterColumn}),LOWER({filterValue.Key}))";
                     break;
+
                 case FilterOperator.IsContainedIn:
                     expression = $"{filterColumn} IN {filterValue.Key}";
                     break;
+
                 case FilterOperator.DoesNotContain:
                     expression = $"{filterColumn} NOT IN {filterValue.Key}";
                     break;
+
                 case FilterOperator.IsNull:
                     expression = $"{filterColumn} IS NULL";
                     break;
+
                 case FilterOperator.IsNotNull:
                     expression = $"{filterColumn} IS NOT NULL";
                     break;
+
                 case FilterOperator.IsEmpty:
                     throw new NotImplementedException(nameof(filter.Operator));
                 case FilterOperator.IsNotEmpty:
@@ -126,6 +139,5 @@
 
             return new KeyValuePair<string, KeyValuePair<string, object>>(expression, filterValue);
         }
-
     }
 }

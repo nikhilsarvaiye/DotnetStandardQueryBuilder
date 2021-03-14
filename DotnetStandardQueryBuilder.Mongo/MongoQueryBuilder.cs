@@ -1,8 +1,8 @@
 ﻿namespace DotnetStandardQueryBuilder
 {
-    using MongoDB.Driver;
     using DotnetStandardQueryBuilder.Core;
     using DotnetStandardQueryBuilder.Mongo.Extensions;
+    using MongoDB.Driver;
     using System;
 
     public class MongoQueryBuilder<T> : IQueryBuilder<T, IFindFluent<T, T>>

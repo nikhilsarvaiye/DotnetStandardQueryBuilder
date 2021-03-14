@@ -1,8 +1,7 @@
 ﻿namespace DotnetStandardQueryBuilder.Mongo
 {
-    using MongoDB.Driver;
     using DotnetStandardQueryBuilder.Core;
-    using System;
+    using MongoDB.Driver;
     using System.Collections.Generic;
 
     internal class SortBuilder

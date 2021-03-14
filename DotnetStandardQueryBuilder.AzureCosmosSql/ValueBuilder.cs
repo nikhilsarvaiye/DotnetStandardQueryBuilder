@@ -3,7 +3,7 @@
     using DotnetStandardQueryBuilder.Core;
     using System;
     using System.Collections.Generic;
-    
+
     internal class ValueBuilder
     {
         private readonly object _value;

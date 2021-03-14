@@ -1,7 +1,6 @@
 ﻿namespace DotnetStandardQueryBuilder.Mongo
 {
     using MongoDB.Driver;
-    using System;
 
     internal class PaginateBuilder
     {

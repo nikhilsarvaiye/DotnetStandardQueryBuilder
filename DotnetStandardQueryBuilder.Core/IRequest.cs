@@ -21,6 +21,5 @@
 
     public interface IRequestTest<T, T2>
     {
-        
     }
 }

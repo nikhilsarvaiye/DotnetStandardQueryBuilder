@@ -1,7 +1,7 @@
 ﻿namespace DotnetStandardQueryBuilder.MemoryList
 {
     using System;
-    
+
     internal class PropertyBuilder
     {
         private readonly string _property;

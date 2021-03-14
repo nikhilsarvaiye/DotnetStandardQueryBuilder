@@ -1,9 +1,9 @@
 ﻿namespace DotnetStandardQueryBuilder.OData
 {
+    using DotnetStandardQueryBuilder.Core;
     using Microsoft.AspNet.OData.Builder;
     using Microsoft.OData.Edm;
     using Microsoft.OData.UriParser;
-    using DotnetStandardQueryBuilder.Core;
     using System;
 
     public class UriParser
@@ -27,7 +27,7 @@
                     EnableCaseInsensitive = _uriParserSettings.EnableCaseInsensitive
                 }
             };
-            
+
             bool? count = parser.ParseCount();
             long? top = parser.ParseTop();
             long? skip = parser.ParseSkip();

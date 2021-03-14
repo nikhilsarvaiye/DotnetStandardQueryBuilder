@@ -2,7 +2,7 @@
 {
     using Microsoft.OData.UriParser;
     using System.Collections.Generic;
-    
+
     internal static class SelectParser
     {
         internal static List<string> Parse(this SelectExpandClause selectExpandClause)

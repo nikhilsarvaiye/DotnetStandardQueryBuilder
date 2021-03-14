@@ -8,7 +8,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text.RegularExpressions;
 
     internal class FilterBuilder
     {
@@ -21,26 +20,25 @@
 
         internal List<T> Build<T>(List<T> memoryList)
         {
-            if (_filter != null)
+            if (_filter == null)
             {
-                var documents = JsonConvert.DeserializeObject<List<JObject>>(JsonConvert.SerializeObject(memoryList, new JsonSerializerSettings
-                {
-                    ContractResolver = new DefaultContractResolver
-                    {
-                        NamingStrategy = new CamelCaseNamingStrategy()
-                    }
-                }));
-
-                var whereExpression = Build(_filter, documents);
-
-                var filteredDocuments = documents.Where(whereExpression).ToList();
-
-                memoryList = JsonConvert.DeserializeObject<List<T>>(JsonConvert.SerializeObject(filteredDocuments));
+                return memoryList;
             }
 
-            return memoryList;
-        }
+            var documents = JsonConvert.DeserializeObject<List<JObject>>(JsonConvert.SerializeObject(memoryList, new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new CamelCaseNamingStrategy()
+                }
+            }));
 
+            var whereExpression = Build(_filter, documents);
+
+            var filteredDocuments = documents.Where(whereExpression).ToList();
+
+            return JsonConvert.DeserializeObject<List<T>>(JsonConvert.SerializeObject(filteredDocuments));
+        }
 
         private Func<JObject, bool> Build(IFilter filter, List<JObject> documents)
         {

@@ -81,38 +81,49 @@
                 case FilterOperator.IsEqualTo:
                     expression = $"{filterColumn}={filterValue.Value}";
                     break;
+
                 case FilterOperator.IsNotEqualTo:
                     expression = $"{filterColumn}!={filterValue.Value}";
                     break;
+
                 case FilterOperator.IsGreaterThan:
                     expression = $"{filterColumn}>{filterValue.Value}";
                     break;
+
                 case FilterOperator.IsGreaterThanOrEqualTo:
                     expression = $"{filterColumn}>={filterValue.Value}";
                     break;
+
                 case FilterOperator.IsLessThan:
                     expression = $"{filterColumn}<{filterValue.Value}";
                     break;
+
                 case FilterOperator.IsLessThanOrEqualTo:
                     expression = $"{filterColumn}<={filterValue.Value}";
                     break;
+
                 case FilterOperator.Contains:
                     expression = $"CONTAINS(LOWER({filterColumn}),LOWER({filterValue.Value}))";
                     expression += " OR ";
                     expression += $"ARRAY_CONTAINS({filterColumn},{filterValue.Value})";
                     break;
+
                 case FilterOperator.StartsWith:
                     expression = $"STARTSWITH(LOWER({filterColumn}),LOWER({filterValue.Value}))";
                     break;
+
                 case FilterOperator.EndsWith:
                     expression = $"ENDSWITH(LOWER({filterColumn}),LOWER({filterValue.Value}))";
                     break;
+
                 case FilterOperator.IsNull:
                     expression = $"IS_NULL({filterColumn})";
                     break;
+
                 case FilterOperator.IsContainedIn:
                     expression = $"ARRAY_CONTAINS({filterColumn},{filterValue.Value})";
                     break;
+
                 case FilterOperator.DoesNotContain:
                     throw new NotImplementedException(nameof(filter.Operator));
                 case FilterOperator.IsNotNull:
@@ -127,6 +138,5 @@
 
             return new KeyValuePair<string, KeyValuePair<string, object>>(expression, filterValue);
         }
-
     }
 }

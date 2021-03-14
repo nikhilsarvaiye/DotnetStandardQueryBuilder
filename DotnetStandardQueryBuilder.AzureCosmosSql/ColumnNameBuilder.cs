@@ -1,7 +1,7 @@
 ﻿namespace DotnetStandardQueryBuilder.AzureCosmosSql
 {
     using System;
-    
+
     public class ColumnNameBuilder
     {
         private readonly string _property;
