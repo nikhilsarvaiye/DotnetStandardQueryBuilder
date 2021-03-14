@@ -8,6 +8,7 @@ A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL
 3. Support for [DotnetStandardQueryBuilder.Mongo](https://www.nuget.org/packages/DotnetStandardQueryBuilder.Mongo/) for Mongo Database
 3. Support for [DotnetStandardQueryBuilder.Sql](https://www.nuget.org/packages/DotnetStandardQueryBuilder.Sql/) for Sql Database
 3. Support for [DotnetStandardQueryBuilder.AzureCosmosSql](https://www.nuget.org/packages/DotnetStandardQueryBuilder.AzureCosmosSql/) for Azure Cosmos database for Sql Query
+4. Support for [DotnetStandardQueryBuilder.MemoryList](https://www.nuget.org/packages/DotnetStandardQueryBuilder.MemoryList/) for Memory List database
 
 ### How to use
 
