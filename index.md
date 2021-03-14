@@ -1,6 +1,6 @@
 # DotnetStandardQueryBuilder
 
-A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL, Azure Cosmos Db database
+A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL, Azure Cosmos Db, In Memory database
 
 ## Features
 
