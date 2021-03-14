@@ -116,7 +116,7 @@
                     return Builders<T>.Filter.In(filterColumn, filterValue.AsBsonArray);
 
                 case FilterOperator.DoesNotContain:
-                    return Builders<T>.Filter.Regex(filterColumn, new BsonRegularExpression($"^((?!{filterValue}).)*$", "i"));
+                    return Builders<T>.Filter.Not(Builders<T>.Filter.In(filterColumn, filterValue.AsBsonArray));
 
                 case FilterOperator.IsNotNull:
                     return Builders<T>.Filter.Exists(filterColumn);

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DotnetStandardQueryBuilder.Core\DotnetStandardQueryBuilder.Core.csproj" />
+    <ProjectReference Include="..\DotnetStandardQueryBuilder.MemoryList\DotnetStandardQueryBuilder.MemoryList.csproj" />
     <ProjectReference Include="..\DotnetStandardQueryBuilder.Mongo\DotnetStandardQueryBuilder.Mongo.csproj" />
     <ProjectReference Include="..\DotnetStandardQueryBuilder.OData\DotnetStandardQueryBuilder.OData.csproj" />
     <ProjectReference Include="..\DotnetStandardQueryBuilder.Sql\DotnetStandardQueryBuilder.Sql.csproj" />

@@ -1,6 +1,6 @@
-﻿namespace DotnetStandardQueryBuilder.OData
+﻿namespace DotnetStandardQueryBuilder
 {
-
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class SampleModel
@@ -12,8 +12,36 @@
 
         public string FirstName { get; set; }
 
-        public string ParentId { get; set; }
+        public int[] ParentId { get; set; }
 
         public int Value { get; set; }
+
+        public static List<SampleModel> SampleItems = new List<SampleModel>
+            {
+                new SampleModel
+                {
+                    Id = "1",
+                    Name = "name",
+                    ParentId = new int[]{ 100, 200, 300 },
+                    FirstName = "firstName",
+                    Value = 200
+                },
+                new SampleModel
+                {
+                    Id = "2",
+                    Name = "Nikhil Sarvaiye",
+                    ParentId = new int[]{ 100 },
+                    FirstName = "Sarvaiye",
+                    Value = 10
+                },
+                new SampleModel
+                {
+                    Id = "3",
+                    Name = "Dotnet Standard",
+                    ParentId = new int[]{ },
+                    FirstName = "Dotnet",
+                    Value = 100
+                }
+            };
     }
 }

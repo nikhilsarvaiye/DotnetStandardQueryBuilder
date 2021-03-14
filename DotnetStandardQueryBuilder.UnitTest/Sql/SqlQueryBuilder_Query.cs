@@ -2,7 +2,7 @@ namespace DotnetStandardQueryBuilder.UnitTest.Sql
 {
     using NUnit.Framework;
 
-    public class MongoQueryBuilder_Query
+    public class SqlQueryBuilder_Query
     {
         [SetUp]
         public void Setup()

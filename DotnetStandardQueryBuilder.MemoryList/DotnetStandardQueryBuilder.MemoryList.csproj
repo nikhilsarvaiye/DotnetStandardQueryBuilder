@@ -1,22 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
     <Version>1.0.6</Version>
-    <Description>DotnetStandardQueryBuilder.AzureCosmosSql package contains methods to build Azure Cosmos database SQL query from query builder request</Description>
+    <Description>DotnetStandardQueryBuilder.MemoryList package contains methods to filter in memory list objects by using query builder request</Description>
     <Copyright>Nikhil Sarvaiye - Personal</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://nikhilsarvaiye.github.io/DotnetStandardQueryBuilder/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nikhilsarvaiye/DotnetStandardQueryBuilder</RepositoryUrl>
+    <PackageTags>querybuilder,query,builder,odata,aspnetcore,webapi,mongo,mongodb,sql,filter,dynamic,dotnet,standard,c#,easy,dotnet,standard,azure,azuresql,memory</PackageTags>
     <PackageReleaseNotes>A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL, Azure Cosmos Db, In Memory database</PackageReleaseNotes>
-    <PackageTags>querybuilder,query,builder,odata,aspnetcore,webapi,mongo,mongodb,sql,filter,dynamic,dotnet,standard,c#,easy,dotnet,standard,azure,azuresql</PackageTags>
-    <RepositoryType>Github</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DotnetStandardQueryBuilder.Core\DotnetStandardQueryBuilder.Core.csproj" />
-    <ProjectReference Include="..\DotnetStandardQueryBuilder.Sql\DotnetStandardQueryBuilder.Sql.csproj" />
   </ItemGroup>
 
 </Project>

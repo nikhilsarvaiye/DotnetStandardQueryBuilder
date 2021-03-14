@@ -12,14 +12,14 @@
     <RepositoryUrl>https://github.com/nikhilsarvaiye/DotnetStandardQueryBuilder</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
     <PackageTags>querybuilder,query,builder,odata,aspnetcore,webapi,mongo,mongodb,sql,filter,dynamic,dotnet,standard,c#,easy,dotnet,standard,azure,azuresql</PackageTags>
-    <PackageReleaseNotes>A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL, Azure Cosmos Db database</PackageReleaseNotes>
+    <PackageReleaseNotes>A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL, Azure Cosmos Db, In Memory database</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>DotnetStandardQueryBuilder.Core</PackageId>
     <Product>DotnetStandardQueryBuilder.Core</Product>
     <AssemblyName>DotnetStandardQueryBuilder.Core</AssemblyName>
     <RootNamespace>DotnetStandardQueryBuilder.Core</RootNamespace>
-    <Version>1.0.5</Version>
+    <Version>1.0.6</Version>
   </PropertyGroup>
 
 </Project>

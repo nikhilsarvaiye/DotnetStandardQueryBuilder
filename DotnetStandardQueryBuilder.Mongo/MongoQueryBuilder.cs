@@ -28,8 +28,8 @@
             var filterDefinition = Request.Filter.ToFilterDefinition<T>();
 
             return _collection.Find(filterDefinition)
-                .Paginate(Request.Page, Request.PageSize)
                 .Sort(Request.Sorts)
+                .Paginate(Request.Page, Request.PageSize)
                 .Project(Request.Select);
         }
 

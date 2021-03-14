@@ -30,8 +30,7 @@
             {
                 Query = $@" {sqlExpression.SelectClause}
 						{(!string.IsNullOrEmpty(sqlExpression.WhereClause) ? $" WHERE {sqlExpression.WhereClause}" : string.Empty)}
-						{(!string.IsNullOrEmpty(sqlExpression.OrderByClause) ? $" ORDER BY {sqlExpression.OrderByClause}" : string.Empty)}
-						{sqlExpression.PageQuery}",
+						{(!string.IsNullOrEmpty(sqlExpression.OrderByClause) ? $" ORDER BY {sqlExpression.OrderByClause}" : string.Empty)}",
                 Values = sqlExpression.Values
             };
         }

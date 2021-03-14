@@ -4,7 +4,7 @@ namespace DotnetStandardQueryBuilder.UnitTest.Mongo
     using MongoDB.Driver;
     using NUnit.Framework;
 
-    public class UriParser_Parse
+    public class MongoQueryBuilder_Query
     {
         [SetUp]
         public void Setup()
