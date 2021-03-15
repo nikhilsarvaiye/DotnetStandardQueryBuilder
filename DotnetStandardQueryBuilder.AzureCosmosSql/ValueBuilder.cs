@@ -2,7 +2,9 @@
 {
     using DotnetStandardQueryBuilder.Core;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
 
     internal class ValueBuilder
     {
@@ -27,8 +29,16 @@
             {
                 return _value.ToString().ToLowerInvariant();
             }
-            else if (_value is List<object>)
+            else if (_value is IEnumerable)
             {
+                var values = new List<object>();
+                foreach (var x in _value as IEnumerable)
+                {
+                    var updatedValue = new ValueBuilder(x).Build();
+                    values.Add(updatedValue);
+                }
+                var value = string.Join(",", values);
+                return value;
             }
 
             return _value;

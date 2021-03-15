@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DotnetStandardQueryBuilder.AzureCosmosSql\DotnetStandardQueryBuilder.AzureCosmosSql.csproj" />
     <ProjectReference Include="..\DotnetStandardQueryBuilder.Core\DotnetStandardQueryBuilder.Core.csproj" />
     <ProjectReference Include="..\DotnetStandardQueryBuilder.MemoryList\DotnetStandardQueryBuilder.MemoryList.csproj" />
     <ProjectReference Include="..\DotnetStandardQueryBuilder.Mongo\DotnetStandardQueryBuilder.Mongo.csproj" />

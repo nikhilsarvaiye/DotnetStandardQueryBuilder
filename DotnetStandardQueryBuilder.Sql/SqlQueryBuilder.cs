@@ -46,7 +46,7 @@
 
             Request.Select = new List<string>() { "COUNT(1)" };
 
-            var sqlExpression = new SqlExpression(Request).Where().Select(_tableName).OrderBy().Paginate();
+            var sqlExpression = new SqlExpression(Request).Where().Select(_tableName);
 
             return new SqlQuery
             {

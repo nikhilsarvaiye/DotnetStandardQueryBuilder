@@ -21,7 +21,7 @@
         {
             if (_sqlQuery.Request.Filter == null)
             {
-                return null;
+                return _sqlQuery;
             }
 
             valuesCounter = 1;
@@ -72,7 +72,7 @@
         {
             string expression;
             var filterColumn = filter.Property.ToColumn();
-            var value = filter.ToValue();
+            var value = filter.Value.ToValue();
             var filterValue = new KeyValuePair<string, object>($"@{filterColumn}{valuesCounter}", value);
 
             switch (filter.Operator)

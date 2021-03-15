@@ -2,7 +2,7 @@ namespace DotnetStandardQueryBuilder.UnitTest.Sql
 {
     using NUnit.Framework;
 
-    public class SqlQueryBuilder_Query
+    public class AzureSqlQueryBuilder_Query
     {
         [SetUp]
         public void Setup()
@@ -18,7 +18,43 @@ namespace DotnetStandardQueryBuilder.UnitTest.Sql
 
             var sqlCountQuery = sqlQueryBuilder.QueryCount();
 
-            Assert.Pass();
+            sqlQueryBuilder = new SqlQueryBuilder(SampleRequest.SimpleIn, "Test");
+
+            sqlQuery = sqlQueryBuilder.Query();
+
+            sqlCountQuery = sqlQueryBuilder.QueryCount();
+
+            sqlQueryBuilder = new SqlQueryBuilder(SampleRequest.SimpleAnd, "Test");
+
+            sqlQuery = sqlQueryBuilder.Query();
+
+            sqlCountQuery = sqlQueryBuilder.QueryCount();
+
+            sqlQueryBuilder = new SqlQueryBuilder(SampleRequest.SimpleOr, "Test");
+
+            sqlQuery = sqlQueryBuilder.Query();
+
+            sqlCountQuery = sqlQueryBuilder.QueryCount();
+
+            sqlQueryBuilder = new SqlQueryBuilder(SampleRequest.SimpleCompositeAndOr, "Test");
+
+            sqlQuery = sqlQueryBuilder.Query();
+
+            sqlCountQuery = sqlQueryBuilder.QueryCount();
+
+            sqlQueryBuilder = new SqlQueryBuilder(SampleRequest.SimpleContainsStartsWith, "Test");
+
+            sqlQuery = sqlQueryBuilder.Query();
+
+            sqlCountQuery = sqlQueryBuilder.QueryCount();
+
+            sqlQueryBuilder = new SqlQueryBuilder(SampleRequest.SimpleSort, "Test");
+
+            sqlQuery = sqlQueryBuilder.Query();
+
+            sqlCountQuery = sqlQueryBuilder.QueryCount();
+
+            Assert.AreEqual(3, 3);
         }
     }
 }
