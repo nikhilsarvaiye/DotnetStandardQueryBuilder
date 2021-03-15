@@ -53,8 +53,9 @@ A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL
         }
     }
     ```
+    The [DotnetStandardQueryBuilder.Odata](https://www.nuget.org/packages/DotnetStandardQueryBuilder.Odata/) packages uses [Microsoft.OData.Core](https://www.nuget.org/packages/Microsoft.OData.Core/) package internally to decouple ODataUriParser logic and map [ODataUriParser](https://docs.microsoft.com/en-us/dotnet/api/microsoft.odata.uriparser.odatauriparser?view=odata-core-7.0) objects to [Request](https://github.com/nikhilsarvaiye/DotnetStandardQueryBuilder/blob/main/DotnetStandardQueryBuilder.Core/IRequest.cs).
 
-2. Using Request Object to build queries for Mongo,
+2. Using [Request](https://github.com/nikhilsarvaiye/DotnetStandardQueryBuilder/blob/main/DotnetStandardQueryBuilder.Core/IRequest.cs) Object to build queries for Mongo,
 
     ```csharp
     var query = new MongoQueryBuilder<T>(request, _mongoCollection).Query();
@@ -95,7 +96,7 @@ A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL
     }
     ```
 
-3. Using Request Object to build queries for Sql,
+3. Using [Request](https://github.com/nikhilsarvaiye/DotnetStandardQueryBuilder/blob/main/DotnetStandardQueryBuilder.Core/IRequest.cs) Object to build queries for Sql,
 
     ```csharp
     var tableName = "Users";
@@ -131,7 +132,7 @@ A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL
     var azureCosmosCountSqlQuery = azureCosmosSqlQueryBuilder.QueryCount();
     ```
 
-4. You can directly use Request object to even build queries from service to service without dependant on Odata query string
+4. You can directly use [Request](https://github.com/nikhilsarvaiye/DotnetStandardQueryBuilder/blob/main/DotnetStandardQueryBuilder.Core/IRequest.cs) object to even build queries from service to service without dependant on Odata query string
 
     ```csharp
     var request = new Request
@@ -183,25 +184,26 @@ A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL
     };
     ```
 
-    Request Class
+5. Using Memory List
+
+    Sometimes we can have a scenario where we have cached list data or list of items already in memory objects. Here you can use the [DotnetStandardQueryBuilder.MemoryList](https://www.nuget.org/packages/DotnetStandardQueryBuilder.MemoryList/) to query.
+    
+    ```csharp
+    var memoryList = new List<SampleModel>();
+    var memoryListQueryBuilder = new MemoryListQueryBuilder<SampleModel>(request, memoryList);
+    var memoryListQuery = memoryListQueryBuilder.Query();
+    var memoryListCountQuery = memoryListQueryBuilder.QueryCount();
+    ```
+
+    or you can simply use SqlExpression class and extension methods
 
     ```csharp
-    public class Request
-    {
-        public int Page { get; set; } = 1;
+    var memoryList = new List<SampleModel>();
+    var sqlExpression = memoryList.Query(request);
 
-        public int? PageSize { get; set; }
-
-        public bool Count { get; set; }
-
-        public IFilter Filter { get; set; }
-
-        public List<Sort> Sorts { get; set; }
-
-        public List<string> Select { get; set; }
-
-        public bool Distinct { get; set; }
-    }
+    var sqlExpression = memoryList.QueryCount(request);
     ```
+
+The package is newly created and aim to simplify query building, filtering using [DotnetStandardQueryBuilder.Odata](https://www.nuget.org/packages/DotnetStandardQueryBuilder.Odata/) and different database packages. 
 
 Feel free contribute and raise PR's
