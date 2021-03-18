@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <Authors>Nikhil Sarvaiye</Authors>
     <Company>Personal</Company>
     <Description>DotnetStandardQueryBuilder.Core package contains all the necessary core properties and methods for QueryBuilder package
@@ -19,7 +19,7 @@
     <Product>DotnetStandardQueryBuilder.Core</Product>
     <AssemblyName>DotnetStandardQueryBuilder.Core</AssemblyName>
     <RootNamespace>DotnetStandardQueryBuilder.Core</RootNamespace>
-    <Version>1.0.9</Version>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
 </Project>
