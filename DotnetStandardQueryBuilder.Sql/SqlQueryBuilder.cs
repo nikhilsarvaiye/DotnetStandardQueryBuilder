@@ -56,5 +56,22 @@
                 Values = sqlExpression.Values
             };
         }
+
+        public SqlQuery CreateQuery<T>(List<T> items, List<string> excludeColumns = null)
+            where T : class
+        {
+            return new CreateBuilder(Request).Build(items, _tableName, excludeColumns);
+        }
+
+        public SqlQuery UpdateQuery<T>(List<T> items, List<string> excludeColumns = null)
+            where T : class
+        {
+            return new UpdateBuilder(Request).Build(items, _tableName, excludeColumns);
+        }
+
+        public SqlQuery DeleteQuery()
+        {
+            return new DeleteBuilder(Request).Build(_tableName);
+        }
     }
 }

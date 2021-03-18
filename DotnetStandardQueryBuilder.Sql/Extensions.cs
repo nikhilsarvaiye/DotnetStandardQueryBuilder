@@ -1,6 +1,7 @@
 ﻿namespace DotnetStandardQueryBuilder.Sql.Extensions
 {
     using DotnetStandardQueryBuilder.Core;
+    using System.Collections.Generic;
 
     public static class Extensions
     {
@@ -12,6 +13,23 @@
         public static SqlQuery QueryCount(this IRequest request, string tableName)
         {
             return new SqlQueryBuilder(request, tableName).QueryCount();
+        }
+
+        public static SqlQuery CreateQuery<T>(this IRequest request, List<T> items, string tableName, List<string> excludeColumns = null)
+            where T: class
+        {
+            return new SqlQueryBuilder(request, tableName).CreateQuery(items, excludeColumns);
+        }
+
+        public static SqlQuery UpdateQuery<T>(this IRequest request, List<T> items, string tableName, List<string> excludeColumns = null)
+            where T : class
+        {
+            return new SqlQueryBuilder(request, tableName).UpdateQuery(items, excludeColumns);
+        }
+
+        public static SqlQuery DeleteQuery(this IRequest request, string tableName)
+        {
+            return new SqlQueryBuilder(request, tableName).DeleteQuery(); 
         }
 
         public static SqlExpression Where(this SqlExpression query)

@@ -30,6 +30,18 @@
             return dictionary;
         }
 
+        public static List<KeyValuePair<string, object>> ToKeyValuePairList(this Dictionary<string, object> list)
+        {
+            var keyValuePairList = new List<KeyValuePair<string, object>>();
+
+            foreach (var keyValuePair in list)
+            {
+                keyValuePairList.Add(new KeyValuePair<string, object>(keyValuePair.Key, keyValuePair.Value));
+            }
+
+            return keyValuePairList;
+        }
+
         public static string To_yyyy_MM_dd(this DateTime dateTime)
         {
             return $"{dateTime:yyyy-MM-dd}";
