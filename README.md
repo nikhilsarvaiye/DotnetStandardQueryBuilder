@@ -101,8 +101,16 @@ A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL
     ```csharp
     var tableName = "Users";
     var sqlQueryBuilder = new SqlQueryBuilder(request, tableName);
+    
     var sqlQuery = sqlQueryBuilder.Query();
+    
     var sqlCountQuery = sqlQueryBuilder.QueryCount();
+    
+    var sqlCreateQuery = sqlQueryBuilder.CreateQuery<T>(new List<T> { }, new List<string> { nameof(SampleModel.Id) });
+    
+    var sqlUpdateQuery = sqlQueryBuilder.UpdateQuery<T>(new List<T> { }, new List<string> { nameof(SampleModel.Id) });
+    
+    var sqlDeleteQuery = sqlQueryBuilder.DeleteQuery();
     ```
 
     or you can simply use SqlExpression class and extension methods
@@ -112,6 +120,8 @@ A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL
     var sqlExpression = new SqlExpression(request).Where().Select(tableName).OrderBy().Paginate();
 
     var sqlExpression = new SqlExpression(request).Where().Select(tableName).OrderBy();
+    
+    var sqlQuery = request.DeleteQuery(_tableName);
     ```
 
     The output Sql Query class provides output as expression and both values in seperate properties so you can pass them directly to avoid SqlInjection

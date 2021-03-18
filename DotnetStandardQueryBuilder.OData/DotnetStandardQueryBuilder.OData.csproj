@@ -17,7 +17,7 @@
     <PackageId>DotnetStandardQueryBuilder.OData</PackageId>
     <Product>DotnetStandardQueryBuilder.OData</Product>
     <AssemblyName>DotnetStandardQueryBuilder.OData</AssemblyName>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
     <RootNamespace>DotnetStandardQueryBuilder.OData</RootNamespace>
   </PropertyGroup>
 
