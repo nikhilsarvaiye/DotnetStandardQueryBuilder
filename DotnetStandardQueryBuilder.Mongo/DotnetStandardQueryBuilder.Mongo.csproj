@@ -18,7 +18,7 @@
     <Authors>DotnetStandardQueryBuilder.Mongo</Authors>
     <Company>DotnetStandardQueryBuilder.Mongo</Company>
     <AssemblyName>DotnetStandardQueryBuilder.Mongo</AssemblyName>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <RootNamespace>DotnetStandardQueryBuilder.Mongo</RootNamespace>
   </PropertyGroup>
 

@@ -22,19 +22,21 @@
 
             var parser = new ODataUriParser(GetEdmModel<T>(nameof(T)), requestUri)
             {
-                Resolver = new ODataUriResolver()
+                Resolver = new StringAsEnumResolver()
                 {
-                    EnableCaseInsensitive = _uriParserSettings.EnableCaseInsensitive
-                }
+                    EnableCaseInsensitive = _uriParserSettings.EnableCaseInsensitive,
+                },
             };
 
             bool? count = parser.ParseCount();
             long? top = parser.ParseTop();
             long? skip = parser.ParseSkip();
 
+            var filter = parser.ParseFilter().Parse();
+
             return new Request
             {
-                Filter = parser.ParseFilter().Parse(),
+                Filter = filter,
                 Select = parser.ParseSelectAndExpand().Parse(),
                 Sorts = parser.ParseOrderBy().Parse(),
                 Count = count.HasValue ? Convert.ToBoolean(count.Value) : false,

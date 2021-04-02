@@ -1,6 +1,7 @@
 ﻿namespace DotnetStandardQueryBuilder.OData
 {
     using DotnetStandardQueryBuilder.Core;
+    using Microsoft.OData;
     using Microsoft.OData.UriParser;
     using System;
     using System.Collections.Generic;
@@ -49,7 +50,7 @@
                         else
                         {
                             var property = binaryOperator.Left.GetProperty();
-                            var value = binaryOperator.Right.GetValue();
+                            var value = binaryOperator.Right.GetValue().ParseValue();
 
                             return new Filter()
                             {
@@ -65,7 +66,7 @@
                         var parameters = singleValueFunctionCallNode.Parameters.ToList();
 
                         var property = parameters.FirstOrDefault().GetProperty();
-                        var value = parameters.LastOrDefault().GetValue();
+                        var value = parameters.LastOrDefault().GetValue().ParseValue();
 
                         return new Filter()
                         {
@@ -79,7 +80,7 @@
                         var inNode = queryNode as InNode;
 
                         var property = inNode.Left.GetProperty();
-                        var value = inNode.Right.GetValue();
+                        var value = inNode.Right.GetValue().ParseValue();
 
                         return new Filter()
                         {
@@ -133,6 +134,23 @@
             }
 
             return null;
+        }
+
+        private static object ParseValue(this object value)
+        {
+            switch (value.GetType().Name)
+            {
+                case nameof(ODataEnumValue):
+                    {
+                        var enumValue = (value as ODataEnumValue).Value;
+                        
+                        long.TryParse(enumValue, out long numberValue);
+
+                        return numberValue != 0 ? numberValue : enumValue;
+                    };
+            }
+
+            return value;
         }
 
         private static bool IsLogicalOperator(this BinaryOperatorKind binaryOperatorKind)

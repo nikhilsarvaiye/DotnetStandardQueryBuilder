@@ -87,6 +87,16 @@
             },
         };
 
+        public static Request NoRequest = null;
+
+        public static Request NoFilter = new Request
+        {
+            Select = new List<string> { "id", "name" },
+            Page = 1,
+            PageSize = 20,
+            Sorts = new List<Sort>() { new Sort { Direction = SortDirection.Descending, Property = "name" }, new Sort { Direction = SortDirection.Descending, Property = "id" } },
+        };
+
         public static Request SimpleAnd = new Request
         {
             Select = new List<string> { "id", "name" },

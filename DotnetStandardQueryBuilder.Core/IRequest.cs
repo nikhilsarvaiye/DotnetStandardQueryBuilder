@@ -18,8 +18,4 @@
 
         bool Distinct { get; set; }
     }
-
-    public interface IRequestTest<T, T2>
-    {
-    }
 }

@@ -15,16 +15,47 @@ namespace DotnetStandardQueryBuilder.UnitTest.Mongo
         public void Query_IsValidSimpleFilterQuery_ReturnsMongoQuery()
         {
             // TODO: Remove, did for fun, need to remove and put mock
-            var collection = new MongoClient("mongodb://localhost:27017").GetDatabase("RetailEasy").GetCollection<BsonDocument>("users");
+            var collection = new MongoClient("mongodb://localhost:27017").GetDatabase("RetailEasy").GetCollection<SampleModel>("sample");
 
-            var mongoQueryBuilder = new MongoQueryBuilder<BsonDocument>(SampleRequest.Full, collection);
+            var result = new MongoQueryBuilder<SampleModel>(SampleRequest.NoRequest, collection).Query().ToList();
 
-            var mongoQuery = mongoQueryBuilder.Query();
+            Assert.AreEqual(result.Count, 1);
 
-            // new {find({ "$or" : [{ "_id" : 1 }, { "parentId" : { "$in" : [1234, 4554, 6687] } }, { "value" : { "$gt" : 100 }, "firstName" : { "$ne" : "firstName" } }], "name" : { "$ne" : "name" } }, { "name" : 1 }).sort({ "name" : -1 }).skip(20).limit(20)}
-            // old {find({ "value" : { "$gt" : 100 }, "firstName" : { "$ne" : "firstName" }, "name" : { "$ne" : "name" } }, { "name" : 1 }).sort({ "name" : -1 }).skip(20).limit(20)}
+            result = new MongoQueryBuilder<SampleModel>(SampleRequest.NoFilter, collection).Query().ToList();
 
-            var mongoCountQuery = mongoQueryBuilder.QueryCount();
+            Assert.AreEqual(result.Count, 1);
+
+            result = new MongoQueryBuilder<SampleModel>(SampleRequest.SimpleEq, collection).Query().ToList();
+
+            Assert.AreEqual(result.Count, 1);
+
+            result = new MongoQueryBuilder<SampleModel>(SampleRequest.SimpleAnd, collection).Query().ToList();
+
+            Assert.AreEqual(result.Count, 0);
+
+            result = new MongoQueryBuilder<SampleModel>(SampleRequest.SimpleOr, collection).Query().ToList();
+
+            Assert.AreEqual(result.Count, 2);
+
+            result = new MongoQueryBuilder<SampleModel>(SampleRequest.SimpleCompositeAndOr, collection).Query().ToList();
+
+            Assert.AreEqual(result.Count, 1);
+
+            result = new MongoQueryBuilder<SampleModel>(SampleRequest.SimpleIn, collection).Query().ToList();
+
+            Assert.AreEqual(result.Count, 2);
+
+            result = new MongoQueryBuilder<SampleModel>(SampleRequest.SimpleContainsStartsWith, collection).Query().ToList();
+
+            Assert.AreEqual(result.Count, 2);
+
+            result = new MongoQueryBuilder<SampleModel>(SampleRequest.SimpleSort, collection).Query().ToList();
+
+            Assert.AreEqual(result.Count, 3);
+
+            var count = new MongoQueryBuilder<SampleModel>(SampleRequest.PageSizeNull, collection).QueryCount().ToList();
+
+            Assert.AreEqual(count, 3);
 
             Assert.Pass();
         }

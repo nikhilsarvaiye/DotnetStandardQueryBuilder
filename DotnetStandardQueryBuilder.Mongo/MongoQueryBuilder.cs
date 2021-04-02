@@ -14,7 +14,7 @@
 
         public MongoQueryBuilder(IRequest request, IMongoCollection<T> collection)
         {
-            Request = request ?? throw new ArgumentNullException(nameof(request));
+            Request = request;
             _collection = collection ?? throw new ArgumentNullException(nameof(collection));
         }
 

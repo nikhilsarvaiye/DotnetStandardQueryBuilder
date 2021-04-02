@@ -16,6 +16,8 @@
 
         public int Value { get; set; }
 
+        public SampleEnum EnumValue { get; set; }
+
         public static List<SampleModel> SampleItems = new List<SampleModel>
             {
                 new SampleModel
@@ -43,5 +45,11 @@
                     Value = 100
                 }
             };
+    }
+
+    public enum SampleEnum
+    {
+        Option1 = 1,
+        Option2 = 2
     }
 }
