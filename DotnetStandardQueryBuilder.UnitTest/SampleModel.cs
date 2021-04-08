@@ -3,6 +3,13 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    public class User
+    {
+        [Key] // This is for OData Query Model
+        public string Id { get; set; }
+    }
+
+
     public class SampleModel
     {
         [Key] // This is for OData Query Model

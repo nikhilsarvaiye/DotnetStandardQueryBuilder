@@ -2,6 +2,7 @@
 {
     using MongoDB.Driver;
     using System.Collections.Generic;
+    using System.Linq;
 
     internal class ProjectBuilder
     {
@@ -19,11 +20,8 @@
                 return query;
             }
 
-            foreach (var select in _select)
-            {
-                query = query.Project<T>(Builders<T>.Projection.Include(select));
-            }
-
+            query = query.Project<T>(Builders<T>.Projection.Combine(_select.Select(x => Builders<T>.Projection.Include(x))));
+            
             return query;
         }
     }

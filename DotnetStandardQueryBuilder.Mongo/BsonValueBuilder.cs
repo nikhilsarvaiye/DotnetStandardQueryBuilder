@@ -3,6 +3,7 @@
     using DotnetStandardQueryBuilder.Mongo.Extensions;
     using MongoDB.Bson;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -33,9 +34,13 @@
                     return BsonValue.Create(dateTime);
                 }
             }
-            else if (_value is List<object>)
+            else if (_value is IEnumerable)
             {
-                var values = (_value as List<object>)?.Select(x => x.ToBsonValue()).ToList();
+                var values = new List<object>();
+                foreach (var item in (_value as IEnumerable))
+                {
+                    values.Add(item.ToBsonValue());
+                }
                 return BsonValue.Create(values);
             }
 
