@@ -4,7 +4,7 @@ A Odata compliant Query Builder built using Dotnet Standard 2.0 for MongoDB, SQL
 
 [Project](https://nikhilsarvaiye.github.io/DotnetStandardQueryBuilder/)
 
-![Architecture](https://raw.githubusercontent.com/nikhilsarvaiye/DotnetStandardQueryBuilder/main/architecture.png)
+![Architecture](architecture.png)
 
 ## Features
 
