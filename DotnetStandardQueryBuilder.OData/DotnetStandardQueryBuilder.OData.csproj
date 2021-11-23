@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <Authors>Nikhil Sarvaiye</Authors>
     <Description>DotnetStandardQueryBuilder.OData package contains methods to build query request from http request query string</Description>
@@ -22,8 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.OData.Core" Version="7.8.3" />
-    <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.5.5" />
+    <PackageReference Include="Microsoft.OData.Core" Version="7.9.4" />
+    <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>

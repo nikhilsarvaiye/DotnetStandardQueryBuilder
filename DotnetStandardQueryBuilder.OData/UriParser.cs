@@ -1,8 +1,8 @@
 ﻿namespace DotnetStandardQueryBuilder.OData
 {
     using DotnetStandardQueryBuilder.Core;
-    using Microsoft.AspNet.OData.Builder;
     using Microsoft.OData.Edm;
+    using Microsoft.OData.ModelBuilder;
     using Microsoft.OData.UriParser;
     using System;
 
