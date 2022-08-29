@@ -36,6 +36,22 @@ namespace DotnetStandardQueryBuilder.UnitTest.Mongo
 
             Assert.AreEqual(result.Count, 2);
 
+            result = new MemoryListQueryBuilder<SampleModel>(SampleRequest.SimpleIsNull, SampleModel.SampleItems).Query();
+
+            Assert.AreEqual(result.Count, 1);
+
+            result = new MemoryListQueryBuilder<SampleModel>(SampleRequest.SimpleIsNotNull, SampleModel.SampleItems).Query();
+
+            Assert.AreEqual(result.Count, 2);
+
+            result = new MemoryListQueryBuilder<SampleModel>(SampleRequest.SimpleIsNullOrEmpty, SampleModel.SampleItems).Query();
+
+            Assert.AreEqual(result.Count, 1);
+
+            result = new MemoryListQueryBuilder<SampleModel>(SampleRequest.SimpleIsNotNullOrEmpty, SampleModel.SampleItems).Query();
+
+            Assert.AreEqual(result.Count, 2);
+
             result = new MemoryListQueryBuilder<SampleModel>(SampleRequest.SimpleSort, SampleModel.SampleItems).Query();
 
             Assert.AreEqual(result.Count, 3);

@@ -250,6 +250,58 @@
             }
         };
 
+        public static Request SimpleIsNull = new Request
+        {
+            Select = new List<string> { "id", "name" },
+            Page = 1,
+            PageSize = 20,
+            Sorts = new List<Sort>() { new Sort { Direction = SortDirection.Descending, Property = "name" }, new Sort { Direction = SortDirection.Descending, Property = "id" } },
+            Filter = new Filter
+            {
+                Property = "lastName",
+                Operator = FilterOperator.IsNull
+            },
+        };
+
+        public static Request SimpleIsNotNull = new Request
+        {
+            Select = new List<string> { "id", "name" },
+            Page = 1,
+            PageSize = 20,
+            Sorts = new List<Sort>() { new Sort { Direction = SortDirection.Descending, Property = "name" }, new Sort { Direction = SortDirection.Descending, Property = "id" } },
+            Filter = new Filter
+            {
+                Property = "lastName",
+                Operator = FilterOperator.IsNotNull
+            },
+        };
+
+        public static Request SimpleIsNullOrEmpty = new Request
+        {
+            Select = new List<string> { "id", "name" },
+            Page = 1,
+            PageSize = 20,
+            Sorts = new List<Sort>() { new Sort { Direction = SortDirection.Descending, Property = "name" }, new Sort { Direction = SortDirection.Descending, Property = "id" } },
+            Filter = new Filter
+            {
+                Property = "lastName",
+                Operator = FilterOperator.IsNullOrEmpty
+            },
+        };
+
+        public static Request SimpleIsNotNullOrEmpty = new Request
+        {
+            Select = new List<string> { "id", "name" },
+            Page = 1,
+            PageSize = 20,
+            Sorts = new List<Sort>() { new Sort { Direction = SortDirection.Descending, Property = "name" }, new Sort { Direction = SortDirection.Descending, Property = "id" } },
+            Filter = new Filter
+            {
+                Property = "lastName",
+                Operator = FilterOperator.IsNotNullOrEmpty
+            },
+        };
+
         public static Request SimpleSort = new Request
         {
             Select = new List<string> { "id", "name" },
