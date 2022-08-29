@@ -1,7 +1,8 @@
 ﻿namespace DotnetStandardQueryBuilder.UnitTest
 {
-    using DotnetStandardQueryBuilder.Core;
+    using System;
     using System.Collections.Generic;
+    using DotnetStandardQueryBuilder.Core;
 
     public static class SampleRequest
     {
@@ -256,6 +257,47 @@
             Page = 1,
             PageSize = 20,
             Sorts = new List<Sort>() { new Sort { Direction = SortDirection.Ascending, Property = "name" }, new Sort { Direction = SortDirection.Descending, Property = "id" } },
+        };
+
+        public static Request DateTimeEq = new Request
+        {
+            Select = new List<string> { "id", "name" },
+            Page = 1,
+            PageSize = 20,
+            Sorts = new List<Sort>() { new Sort { Direction = SortDirection.Descending, Property = "name" }, new Sort { Direction = SortDirection.Descending, Property = "id" } },
+            Filter = new Filter
+            {
+                Property = "dateTimeValue",
+                Value = DateTime.Parse("2022-08-29 21:42:42"),
+                Operator = FilterOperator.IsEqualTo
+            },
+        };
+
+        public static Request DateTimeBetween = new Request
+        {
+            Select = new List<string> { "id", "name" },
+            Page = 1,
+            PageSize = 20,
+            Sorts = new List<Sort>() { new Sort { Direction = SortDirection.Descending, Property = "name" }, new Sort { Direction = SortDirection.Descending, Property = "id" } },
+            Filter = new CompositeFilter
+            {
+                LogicalOperator = LogicalOperator.And,
+                Filters = new List<IFilter>
+                {
+                    new Filter
+                    {
+                        Property = "dateTimeValue",
+                        Value = DateTime.Parse("2022-08-29 20:00:00"),
+                        Operator = FilterOperator.IsGreaterThanOrEqualTo
+                    },
+                    new Filter
+                    {
+                        Property = "dateTimeValue",
+                        Value =DateTime.Parse( "2022-08-29 23:59:59"),
+                        Operator = FilterOperator.IsLessThanOrEqualTo
+                    }
+                }
+            },
         };
     }
 }

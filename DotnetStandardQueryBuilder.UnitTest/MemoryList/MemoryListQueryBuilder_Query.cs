@@ -40,6 +40,14 @@ namespace DotnetStandardQueryBuilder.UnitTest.Mongo
 
             Assert.AreEqual(result.Count, 3);
 
+            result = new MemoryListQueryBuilder<SampleModel>(SampleRequest.DateTimeEq, SampleModel.SampleItems).Query();
+
+            Assert.AreEqual(result.Count, 1);
+
+            result = new MemoryListQueryBuilder<SampleModel>(SampleRequest.DateTimeBetween, SampleModel.SampleItems).Query();
+
+            Assert.AreEqual(result.Count, 1);
+
             var count = new MemoryListQueryBuilder<SampleModel>(SampleRequest.PageSizeNull, SampleModel.SampleItems).QueryCount();
 
             Assert.AreEqual(count, 3);

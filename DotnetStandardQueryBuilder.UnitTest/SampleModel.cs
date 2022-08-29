@@ -1,5 +1,6 @@
 ﻿namespace DotnetStandardQueryBuilder
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -25,6 +26,8 @@
 
         public SampleEnum EnumValue { get; set; }
 
+        public DateTime DateTimeValue { get; set; }
+
         public static List<SampleModel> SampleItems = new List<SampleModel>
             {
                 new SampleModel
@@ -33,7 +36,8 @@
                     Name = "name",
                     ParentId = new int[]{ 100, 200, 300 },
                     FirstName = "firstName",
-                    Value = 200
+                    Value = 200,
+                    DateTimeValue = new DateTime(2021, 8, 29, 21, 42, 42)
                 },
                 new SampleModel
                 {
@@ -41,7 +45,8 @@
                     Name = "Nikhil Sarvaiye",
                     ParentId = new int[]{ 100 },
                     FirstName = "Sarvaiye",
-                    Value = 10
+                    Value = 10,
+                    DateTimeValue = new DateTime(2022, 8, 29, 21, 42, 42)
                 },
                 new SampleModel
                 {
@@ -49,7 +54,8 @@
                     Name = "Dotnet Standard",
                     ParentId = new int[]{ },
                     FirstName = "Dotnet",
-                    Value = 100
+                    Value = 100,
+                    DateTimeValue = new DateTime(2022, 8, 29, 4, 18, 0)
                 }
             };
     }

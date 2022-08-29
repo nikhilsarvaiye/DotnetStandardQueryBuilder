@@ -127,32 +127,48 @@
                         return !JToken.DeepEquals(document.GetValueIgnoreCase(filterColumn), JToken.FromObject(filterValue));
 
                     case FilterOperator.IsGreaterThan:
-                        if (!filterValue.IsNumeric())
+                        if (filterValue.IsNumeric())
                         {
-                            return false;
+                            return document.GetValueIgnoreCase(filterColumn).ToObject<long>() > Convert.ToInt64(filterValue);
                         }
-                        return document.GetValueIgnoreCase(filterColumn).ToObject<long>() > Convert.ToInt64(filterValue);
+                        else if (document.GetValueIgnoreCase(filterColumn).Type is JTokenType.Date)
+                        {
+                            return document.GetValueIgnoreCase(filterColumn).ToObject<DateTime>() > Convert.ToDateTime(filterValue);
+                        }
+                        return false;
 
                     case FilterOperator.IsGreaterThanOrEqualTo:
-                        if (!filterValue.IsNumeric())
+                        if (filterValue.IsNumeric())
                         {
-                            return false;
+                            return document.GetValueIgnoreCase(filterColumn).ToObject<long>() >= Convert.ToInt64(filterValue);
                         }
-                        return document.GetValueIgnoreCase(filterColumn).ToObject<long>() >= Convert.ToInt64(filterValue);
+                        else if (document.GetValueIgnoreCase(filterColumn).Type is JTokenType.Date)
+                        {
+                            return document.GetValueIgnoreCase(filterColumn).ToObject<DateTime>() >= Convert.ToDateTime(filterValue);
+                        }
+                        return false;
 
                     case FilterOperator.IsLessThan:
-                        if (!filterValue.IsNumeric())
+                        if (filterValue.IsNumeric())
                         {
-                            return false;
+                            return document.GetValueIgnoreCase(filterColumn).ToObject<long>() < Convert.ToInt64(filterValue);
                         }
-                        return document.GetValueIgnoreCase(filterColumn).ToObject<long>() < Convert.ToInt64(filterValue);
+                        else if (document.GetValueIgnoreCase(filterColumn).Type is JTokenType.Date)
+                        {
+                            return document.GetValueIgnoreCase(filterColumn).ToObject<DateTime>() < Convert.ToDateTime(filterValue);
+                        }
+                        return false;
 
                     case FilterOperator.IsLessThanOrEqualTo:
-                        if (!filterValue.IsNumeric())
+                        if (filterValue.IsNumeric())
                         {
-                            return false;
+                            return document.GetValueIgnoreCase(filterColumn).ToObject<long>() <= Convert.ToInt64(filterValue);
                         }
-                        return document.GetValueIgnoreCase(filterColumn).ToObject<long>() <= Convert.ToInt64(filterValue);
+                        else if (document.GetValueIgnoreCase(filterColumn).Type is JTokenType.Date)
+                        {
+                            return document.GetValueIgnoreCase(filterColumn).ToObject<DateTime>() <= Convert.ToDateTime(filterValue);
+                        }
+                        return false;
 
                     case FilterOperator.Contains:
                         if (filterValue is not string)
