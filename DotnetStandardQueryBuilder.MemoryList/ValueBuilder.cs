@@ -18,10 +18,6 @@
             {
                 return Convert.ToString(_value);
             }
-            else if (typeof(DateTime) == _value.GetType())
-            {
-                return Convert.ToDateTime(_value).Date;
-            }
             else if (_value is bool)
             {
                 return Convert.ToBoolean(_value);
