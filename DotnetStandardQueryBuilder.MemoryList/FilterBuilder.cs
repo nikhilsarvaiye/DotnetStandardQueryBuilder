@@ -108,7 +108,6 @@
             // var x = frSomeList.Where(whereClause);
 
             var filterColumn = filter.Property.ToProperty();
-            var filterValue = filter.Value.ToValue();
 
             /*
             if (!document.ContainsKeyIgnoreCase(filterColumn))
@@ -121,80 +120,133 @@
                 switch (filter.Operator)
                 {
                     case FilterOperator.IsEqualTo:
+                    {
+                        var filterValue = filter.Value.ToValue();
                         return JToken.DeepEquals(document.GetValueIgnoreCase(filterColumn), JToken.FromObject(filterValue));
-
+                    }
+                    
                     case FilterOperator.IsNotEqualTo:
+                    {
+                        var filterValue = filter.Value.ToValue();
                         return !JToken.DeepEquals(document.GetValueIgnoreCase(filterColumn), JToken.FromObject(filterValue));
+                    }
 
                     case FilterOperator.IsGreaterThan:
+                    {
+                        var filterValue = filter.Value.ToValue();
                         if (!filterValue.IsNumeric())
                         {
                             return false;
                         }
                         return document.GetValueIgnoreCase(filterColumn).ToObject<long>() > Convert.ToInt64(filterValue);
+                    }
 
                     case FilterOperator.IsGreaterThanOrEqualTo:
+                    {
+                        var filterValue = filter.Value.ToValue();
                         if (!filterValue.IsNumeric())
                         {
                             return false;
                         }
                         return document.GetValueIgnoreCase(filterColumn).ToObject<long>() >= Convert.ToInt64(filterValue);
+                    }
 
                     case FilterOperator.IsLessThan:
+                    {
+                        var filterValue = filter.Value.ToValue();
                         if (!filterValue.IsNumeric())
                         {
                             return false;
                         }
                         return document.GetValueIgnoreCase(filterColumn).ToObject<long>() < Convert.ToInt64(filterValue);
+                    }
 
                     case FilterOperator.IsLessThanOrEqualTo:
+                    {
+                        var filterValue = filter.Value.ToValue();
                         if (!filterValue.IsNumeric())
                         {
                             return false;
                         }
                         return document.GetValueIgnoreCase(filterColumn).ToObject<long>() <= Convert.ToInt64(filterValue);
+                    }
 
                     case FilterOperator.Contains:
+                    {
+                        var filterValue = filter.Value.ToValue();
                         if (filterValue is not string)
                         {
                             return false;
                         }
                         return document.GetValueIgnoreCase(filterColumn).ToObject<string>().ToLowerInvariant().Contains(Convert.ToString(filterValue).ToLowerInvariant());
+                    }
 
                     case FilterOperator.StartsWith:
+                    {
+                        var filterValue = filter.Value.ToValue();
                         if (filterValue is not string)
                         {
                             return false;
                         }
                         return document.GetValueIgnoreCase(filterColumn).ToObject<string>().ToLowerInvariant().StartsWith(Convert.ToString(filterValue).ToLowerInvariant());
+                    }
 
                     case FilterOperator.EndsWith:
+                    {
+                        var filterValue = filter.Value.ToValue();
                         if (filterValue is not string)
                         {
                             return false;
                         }
                         return document.GetValueIgnoreCase(filterColumn).ToObject<string>().ToLowerInvariant().EndsWith(Convert.ToString(filterValue).ToLowerInvariant());
+                    }
 
                     case FilterOperator.IsNull:
-                        return document.GetValueIgnoreCase(filterColumn) == JValue.CreateNull();
+                    {
+                        return document.GetValueIgnoreCase(filterColumn).Type == JTokenType.Null;
+                    }
 
                     case FilterOperator.IsContainedIn:
+                    {
+                        var filterValue = filter.Value.ToValue();
                         return JArray.FromObject(filterValue).Any(x => JToken.DeepEquals(x, JToken.FromObject(document.GetValueIgnoreCase(filterColumn))));
+                    }
 
                     case FilterOperator.DoesNotContain:
+                    {
+                        var filterValue = filter.Value.ToValue();
                         return !JArray.FromObject(filterValue).Any(x => JToken.DeepEquals(x, JToken.FromObject(document.GetValueIgnoreCase(filterColumn))));
+                    }
 
                     case FilterOperator.IsNotNull:
-                        return document.GetValueIgnoreCase(filterColumn) != JValue.CreateNull();
+                    {
+                        return document.GetValueIgnoreCase(filterColumn).Type != JTokenType.Null;
+                    }
 
                     case FilterOperator.IsEmpty:
+                    {
                         return document.GetValueIgnoreCase(filterColumn).ToObject<string>() == string.Empty;
+                    }
 
                     case FilterOperator.IsNotEmpty:
+                    {
                         return document.GetValueIgnoreCase(filterColumn).ToObject<string>() != string.Empty;
+                    }
+
+                    case FilterOperator.IsNullOrEmpty:
+                    {
+                        return string.IsNullOrEmpty(document.GetValueIgnoreCase(filterColumn).ToObject<string>());
+                    }
+
+                    case FilterOperator.IsNotNullOrEmpty:
+                    {
+                        return !string.IsNullOrEmpty(document.GetValueIgnoreCase(filterColumn).ToObject<string>());
+                    }
 
                     default:
+                    {
                         throw new NotImplementedException(nameof(filter.Operator));
+                    }
                 }
             };
         }

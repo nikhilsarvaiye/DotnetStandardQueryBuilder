@@ -18,6 +18,7 @@
         public string Name { get; set; }
 
         public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         public int[] ParentId { get; set; }
 
@@ -33,6 +34,7 @@
                     Name = "name",
                     ParentId = new int[]{ 100, 200, 300 },
                     FirstName = "firstName",
+                    LastName = "lastName",
                     Value = 200
                 },
                 new SampleModel
@@ -40,7 +42,8 @@
                     Id = "2",
                     Name = "Nikhil Sarvaiye",
                     ParentId = new int[]{ 100 },
-                    FirstName = "Sarvaiye",
+                    FirstName = "Nikhil",
+                    LastName = "Sarvaiye",
                     Value = 10
                 },
                 new SampleModel
@@ -49,6 +52,7 @@
                     Name = "Dotnet Standard",
                     ParentId = new int[]{ },
                     FirstName = "Dotnet",
+                    LastName = null,
                     Value = 100
                 }
             };
